@@ -1,34 +1,38 @@
 <template>
-    <div>
-      <h2>Video Library</h2>
-      <div v-if="loading">Loading...</div>
-      <div v-else>
-        <ul>
-          <li v-for="videoUrl in videos" :key="videoUrl">
-            <p>Video: <a :href="videoUrl" target="_blank">{{ videoUrl }}</a>
-              <button id="style" @click="copyToClipboard(videoUrl)">Copy URL</button>
-            </p>
-          </li>
-        </ul>
-        <div v-if="videos.length === 0">No videos found.</div>
-      </div>
+  <div>
+    <h2>Video Library</h2>
+    <div v-if="loading">Loading...</div>
+    <div v-else>
+      <ul>
+        <li v-for="videoUrl in videos" :key="videoUrl">
+          <p>Video: <a :href="videoUrl" target="_blank">{{ videoUrl }}</a>
+            <button id="style" @click="copyToClipboard(videoUrl)">Copy URL</button>
+          </p>
+        </li>
+      </ul>
+      <div v-if="videos.length === 0">No videos found.</div>
     </div>
+  </div>
 </template>
 
 <script>
 import axios from 'axios';
 
 export default {
-    data() {
-      return {
+  data() {
+    return {
       videos: [],
       loading: true,
     };
+  },
+  mounted() {
+    this.fetchVideos();
   },
   methods: {
     async fetchVideos() {
       try {
         const response = await axios.get('https://clumsy-pig-hospital-gown.cyclic.app/api/retrieve');
+        console.log(response.data); 
         this.videos = response.data.videoUrls; 
       } catch (error) {
         console.error('Error fetching videos:', error);
@@ -46,8 +50,8 @@ export default {
       // You can optionally show a success message here
       console.log('URL copied to clipboard:', text);
     },
-  }
-}
+  },
+};
 </script>
 
 <style>
