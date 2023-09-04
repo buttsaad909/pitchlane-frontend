@@ -28,7 +28,7 @@ export default {
   methods: {
     async fetchVideos() {
       try {
-        const response = await axios.get('http://localhost:3000/api/retrieve');
+        const response = await axios.get('https://clumsy-pig-hospital-gown.cyclic.app/api/retrieve');
         this.videos = response.data.videoUrls; 
       } catch (error) {
         console.error('Error fetching videos:', error);
