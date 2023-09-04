@@ -29,7 +29,6 @@ export default {
     async fetchVideos() {
       try {
         const response = await axios.get('http://localhost:3000/api/retrieve');
-        console.log(response.data); 
         this.videos = response.data.videoUrls; 
       } catch (error) {
         console.error('Error fetching videos:', error);
@@ -37,10 +36,26 @@ export default {
         this.loading = false;
       }
     },
+    copyToClipboard(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      // You can optionally show a success message here
+      console.log('URL copied to clipboard:', text);
+    },
   }
 }
 </script>
 
 <style>
+#style  {
+    background-color: red;
+}
 
+#style:focus {     
+    background-color:yellow;    
+}
 </style>
