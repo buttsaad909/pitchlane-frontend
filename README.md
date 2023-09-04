@@ -1,4 +1,4 @@
-# pitchlane-frontend
+# Pitchlane Video Library
 
 ## Project setup
 ```
@@ -15,10 +15,8 @@ npm run serve
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+### Web App
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+The web app is hosted on the following URL: https://pitchlane-frontend.vercel.app
+
+The app takes up to 2–5 seconds to upload a video, and, after the upload, the user needs to refresh to see the video appear in the library.
