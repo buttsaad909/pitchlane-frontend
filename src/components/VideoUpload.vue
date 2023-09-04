@@ -2,7 +2,7 @@
     <div>
         <h2>Upload Video</h2>
         <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile" @change="handleFileChange" accept="video/*">
+            <input type="file" @change="handleFileChange" accept="video/*">
             <button type="button" class="btn btn-primary" @click="uploadVideo">Upload</button>
         </div>
     </div>
